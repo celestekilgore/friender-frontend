@@ -1,13 +1,26 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Alert from "./common/Alert";
+import { LoginInterface } from "./interfaces";
 
-function LoginForm({ login }) {
+/** Login Form component
+ *
+ * Props:
+ * - login: function to call in parent
+ *
+ * State:
+ * - formData: object like {username, password}
+ * - alerts: array of alerts like ["Error: invalid username/password"]
+ *
+ * RoutesList -> LoginForm
+ */
+
+function LoginForm({ login }: { login: Function; }) {
     const [formData, setFormData] = useState({ username: "", password: "" });
     const [alerts, setAlerts] = useState([]);
     const navigate = useNavigate();
 
-    async function handleSubmit(evt) {
+    async function handleSubmit(evt: React.FormEvent<HTMLFormElement>): Promise<void> {
         evt.preventDefault();
         try {
             await login(formData);
@@ -17,7 +30,7 @@ function LoginForm({ login }) {
         }
     }
 
-    function handleChange(evt) {
+    function handleChange(evt: React.ChangeEvent<HTMLInputElement>): void {
         const { name, value } = evt.target;
         setFormData(l => ({ ...l, [name]: value }));
     }

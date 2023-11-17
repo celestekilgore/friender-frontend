@@ -1,11 +1,23 @@
 import { useState, useEffect } from "react";
 import FrienderApi from "./FrienderApi";
+import { UserInterface } from "./interfaces";
 
-function FriendsList({ user }) {
+/** Friends List component
+ *
+ * Props:
+ * - user: object like {username, zip_code, friend_radius, hobbies, interests, image}
+ *
+ * State:
+ * - friends: array of friends like: [{username, image},...]
+ *
+ * RoutesList -> FriendsList
+ */
+
+function FriendsList({ user }: { user: UserInterface; }) {
     const [friends, setFriends] = useState(null);
 
     useEffect(() => {
-        async function getFriends() {
+        async function getFriends(): Promise<void> {
             const friends = await FrienderApi.getFriends(user.username);
             setFriends(friends);
         }

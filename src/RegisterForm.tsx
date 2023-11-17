@@ -13,7 +13,20 @@ const DEFAULT_FORM_DATA: RegisterFormInterface = {
     image: "",
 };
 
-function RegisterForm({ register }) {
+/** Form for registering a new user.
+ *
+ * Props:
+ * - register: function to call in parent
+ *
+ * State:
+ * - formData: object like {username, password, zip_code, friend_radius, hobbies, interests, image}
+ * - alerts: array of alerts like ["Error: invalid zip code"]
+ * - image: File
+ *
+ * App -> RoutesList -> RegisterForm
+ */
+
+function RegisterForm({ register }: {register: Function}) {
     const [formData, setFormData] = useState(DEFAULT_FORM_DATA);
     const [alerts, setAlerts] = useState([]);
     const [image, setImage] = useState(null);

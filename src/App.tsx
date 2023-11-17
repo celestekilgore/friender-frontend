@@ -5,10 +5,14 @@ import NavBar from './NavBar';
 import { BrowserRouter } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import FrienderApi from "./FrienderApi";
+import { PayloadInterface, LoginInterface, RegisterInterface } from './interfaces';
 
-interface PayloadInterface {
-  username: string;
-}
+/** App component
+ *
+ * State:
+ * - token: JWT token
+ * - user: object like {username, zip_code, friend_radius, hobbies, interests, image}
+ */
 
 function App() {
 
@@ -16,8 +20,8 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(
-    function loadCurrentUser() {
-      async function getCurrentUser() {
+    function loadCurrentUser(): void {
+      async function getCurrentUser(): Promise<void> {
         FrienderApi.token = token;
 
         if (token) {
@@ -31,7 +35,7 @@ function App() {
             setUser(user);
           }
           catch (err) {
-            // throw (err.message);
+
             logout()
           }
         } else {
@@ -43,17 +47,17 @@ function App() {
       getCurrentUser();
     }, [token]);
 
-  async function login(loginData) {
+  async function login(loginData: LoginInterface): Promise<void> {
     const token = await FrienderApi.login(loginData);
     setToken(token);
   }
 
-  async function register(registerData) {
+  async function register(registerData: RegisterInterface): Promise<void> {
     const token = await FrienderApi.register(registerData);
     setToken(token);
   }
 
-  function logout() {
+  function logout(): void {
     setToken(null);
   }
 

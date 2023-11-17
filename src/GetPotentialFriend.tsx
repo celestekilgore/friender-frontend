@@ -2,14 +2,28 @@ import { useEffect, useState } from "react";
 import FrienderApi from "./FrienderApi";
 import ProfileCard from "./ProfileCard";
 import Alert from "./common/Alert";
+import { UserInterface } from "./interfaces";
 
-function GetPotentialFriend({ user }) {
+/** Get a potential friend
+ *
+ * Props:
+ * - user: object like {username, zip_code, friend_radius, hobbies, interests, image}
+ *
+ * State:
+ * - potential friend: object like {username, zip_code, friend_radius, hobbies, interests, image} or null
+ * - noMoreFriends: bool
+ * - alerts: array of alerts like ["You matched with..."]
+ *
+ * RoutesList -> GetPotentialFriend
+ */
+
+function GetPotentialFriend({ user }: { user: UserInterface; }) {
     const [potentialFriend, setPotentialFriend] = useState(null);
     const [noMoreFriends, setNoMoreFriends] = useState(false);
     const [alerts, setAlerts] = useState([]);
 
     useEffect(() => {
-        async function getPotentialFriend() {
+        async function getPotentialFriend(): Promise<void> {
             const newPotentialFriend = await FrienderApi.getPotentialFriend(user.username);
             if (newPotentialFriend) {
                 setPotentialFriend(newPotentialFriend);
@@ -17,14 +31,12 @@ function GetPotentialFriend({ user }) {
                 setNoMoreFriends(true);
             }
         }
-
         if (!potentialFriend) {
             getPotentialFriend();
         }
-
     }, [potentialFriend]);
 
-    async function swipe(response: boolean) {
+    async function swipe(response: boolean): Promise<void> {
         const status = await FrienderApi.establishRelationship(potentialFriend.username, response);
         if (status == "friends") {
             setAlerts([`You matched with ${potentialFriend.username}!`]);

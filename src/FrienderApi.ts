@@ -1,49 +1,23 @@
-import { RegisterInterface } from "./interfaces";
+import {
+  RegisterInterface,
+  LoginInterface,
+  TokenApiInterface,
+  UserApiInterface,
+  UserInterface,
+  RelationshipApiInterface,
+  FriendListInterface,
+  FriendInterface
+} from "./interfaces";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5001";
 
-interface LoginInterface {
-  username: string,
-  password: string;
-}
-
-interface TokenApiInterface {
-  token: string;
-}
-
-interface UserApiInterface {
-  user: UserInterface;
-}
-
-interface RelationshipApiInterface {
-  status: string;
-}
-
-interface UserInterface {
-  username: string,
-  zip_code: string,
-  friend_radius: string,
-  hobbies: string,
-  interests: string,
-  image: string,
-}
 
 class FrienderApi {
-  static token = null;
+  static token: string | null = null;
 
   static async request(endpoint, headers = {}, body, method = "GET") {
     const url = new URL(`${BASE_URL}/${endpoint}`);
     headers = { ...headers, "x-access-token": `${FrienderApi.token}` };
-
-    // url.search = (method === "GET")
-    //   ? new URLSearchParams(data).toString()
-    //   : "";
-
-    // // set to undefined since the body property cannot exist on a GET method
-    // const body = (method !== "GET" && data)
-    //   ? JSON.stringify(data)
-    //   : undefined;
-
 
     const resp = await fetch(url, { method, body, headers });
 
@@ -58,7 +32,6 @@ class FrienderApi {
       else {
         throw [errors];
       }
-
     }
 
     return await resp.json();
@@ -138,8 +111,8 @@ class FrienderApi {
     return data.status;
   }
 
-  static async getFriends(username: string) {
-    const data = await FrienderApi.request(
+  static async getFriends(username: string): Promise<FriendInterface[]> {
+    const data: FriendListInterface = await FrienderApi.request(
       `users/${username}/get-friends`,
       {},
       null,

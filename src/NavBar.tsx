@@ -1,7 +1,17 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
+import { UserInterface } from "./interfaces";
 
-function NavBar({ user, logout }) {
+/** NavBar component
+ *
+ * Props:
+ * - user: object like {username, zip_code, friend_radius, hobbies, interests, image}
+ * - logout: function to call in parent.
+ *
+ * App -> NavBar
+ */
+
+function NavBar({ user, logout }: { user: UserInterface, logout: any; }) {
 
     if (user) {
         return (

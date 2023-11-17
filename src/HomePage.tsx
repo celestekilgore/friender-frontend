@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+/** HomePage component
+ *
+ * RoutesList -> HomePage */
+
 function HomePage() {
     return (
         <div className="HomePage vertical-center">
