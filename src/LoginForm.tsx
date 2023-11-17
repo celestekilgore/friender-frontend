@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Alert from "./common/Alert";
 
 function LoginForm({ login }) {
     const [formData, setFormData] = useState({ username: "", password: "" });
-    const [alerts, setAlerts] = useState([]);
+    const [alerts, setAlerts] = useState({});
     const navigate = useNavigate();
 
     async function handleSubmit(evt) {
@@ -12,6 +13,7 @@ function LoginForm({ login }) {
             await login(formData);
             navigate("/");
         } catch (err) {
+            console.log(err)
             setAlerts(err);
         }
     }
@@ -22,7 +24,8 @@ function LoginForm({ login }) {
     }
 
     return (
-        <div className="LoginForm">
+        <div className="Form LoginForm">
+            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
                 <input
@@ -43,14 +46,12 @@ function LoginForm({ login }) {
                     autoComplete="current-password"
                     required
                 />
-                <button onClick={handleSubmit}>
-                    Submit
+                <button type="submit" className="btn btn-primary mt-3">
+                    Login
                 </button>
             </form>
-            {alerts.length > 0 &&
-                <div>
-                    {alerts.map(alert => <i>{alert}</i>)}
-                </div>
+            {Object.keys(alerts).length > 0 &&
+                <Alert alerts={alerts} category={"danger"} />
             }
         </div>
     );

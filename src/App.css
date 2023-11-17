@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +35,102 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.navbar {
+  padding: 10px;
+}
+
+.nav-item {
+  margin-left: 10px;
+}
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+}
+
+.active {
+  font-weight: bold;
+  color: black;
+}
+
+.Form {
+  max-width: 500px;
+  margin: auto;
+  text-align: left;
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.ProfileCard {
+  margin-top: 150px;
+}
+
+.LoginForm {
+  margin-top: 300px;
+}
+
+.RegisterForm {
+  margin-top: 150px;
+}
+
+.vertical-center {
+  margin-top: 400px;
+}
+
+.PageNotFound {
+  margin-top: 400px;
+}
+
+/* .HomePage {
+  max-width: 250px;
+  padding: 20px;
+  color: black;
+  margin: auto;
+  margin-top: 400px;
+  background-color: white;
+  border-radius: 5px;
+} */
+
+.title {
+  font-size: 64px;
+}
+
+html,
+body {
+  color: white;
+  height: 100%;
+}
+
+.loading {
+  color: black;
+  margin: auto;
+  text-align: center;
+}
+
+.bg-image {
+  z-index: -1;
+  position: fixed;
+  /* The image used */
+  background-image: url("../public/busy-city-12.jpg");
+
+  /* Add the blur effect */
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+
+  /* Full height */
+  height: 100%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
