@@ -4,7 +4,7 @@ import Alert from "./common/Alert";
 
 function LoginForm({ login }) {
     const [formData, setFormData] = useState({ username: "", password: "" });
-    const [alerts, setAlerts] = useState({});
+    const [alerts, setAlerts] = useState([]);
     const navigate = useNavigate();
 
     async function handleSubmit(evt) {
@@ -12,9 +12,8 @@ function LoginForm({ login }) {
         try {
             await login(formData);
             navigate("/");
-        } catch (err) {
-            console.log(err)
-            setAlerts(err);
+        } catch (errors) {
+            setAlerts(errors);
         }
     }
 
@@ -50,7 +49,7 @@ function LoginForm({ login }) {
                     Login
                 </button>
             </form>
-            {Object.keys(alerts).length > 0 &&
+            {alerts.length > 0 &&
                 <Alert alerts={alerts} category={"danger"} />
             }
         </div>

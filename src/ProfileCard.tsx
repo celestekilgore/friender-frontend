@@ -1,7 +1,10 @@
-import FrienderApi from "./FrienderApi";
+import { useState } from "react";
 
 function ProfileCard({ user, swipe }) {
+    const [hasSwiped, setHasSwiped] = useState(false);
+
     async function handleSwipe(response: boolean) {
+        setHasSwiped(true);
         await swipe(response);
     }
 
@@ -9,7 +12,7 @@ function ProfileCard({ user, swipe }) {
         <div className="ProfileCard Form">
             <h1>{user.username}</h1>
             <div className="text-center">
-                <img src={user.image} />
+                <img className="profile-card-image" src={user.image} />
             </div>
 
 
@@ -19,8 +22,8 @@ function ProfileCard({ user, swipe }) {
             <h4>Interests</h4>
             <p>{user.interests}</p>
 
-            <button className="btn btn-danger" onClick={() => { handleSwipe(false); }}>No</button>
-            <button className="btn btn-success" style={{ float: "right" }} onClick={() => { handleSwipe(true); }}>Yes</button>
+            <button className="btn btn-danger" onClick={() => { handleSwipe(false); }} disabled={hasSwiped}>No</button>
+            <button className="btn btn-success" style={{ float: "right" }} onClick={() => { handleSwipe(true); }} disabled={hasSwiped}>Yes</button>
 
         </div>
     );

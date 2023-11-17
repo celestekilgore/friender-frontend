@@ -24,8 +24,8 @@ function RegisterForm({ register }) {
         try {
             await register({ ...formData, image });
             navigate("/");
-        } catch (err) {
-            setAlerts(err);
+        } catch (errors) {
+            setAlerts(errors);
         }
     }
 
@@ -118,7 +118,7 @@ function RegisterForm({ register }) {
                     Register
                 </button>
             </form>
-            {Object.keys(alerts).length > 0 &&
+            {alerts.length > 0 &&
                 <Alert alerts={alerts} category={"danger"} />
             }
         </div>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import FrienderApi from "./FrienderApi";
 
 function FriendsList({ user }) {
@@ -20,9 +19,10 @@ function FriendsList({ user }) {
     return (
         <div className="Form mt-3">{
             friends.map(f =>
-                <Link key={f.username} to={`/friends/${f.username}`}>
-                    {f.username}
-                </Link>
+                <div key={f.username} className="mb-3">
+                    <img className="small-img" src={f.image} />
+                    <b>{f.username}</b>
+                </div>
             )
         }
         </div>

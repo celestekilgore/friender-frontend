@@ -31,7 +31,8 @@ function App() {
             setUser(user);
           }
           catch (err) {
-            throw (err.message);
+            // throw (err.message);
+            logout()
           }
         } else {
           localStorage.clear();
@@ -60,7 +61,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="bg-image">asd</div>
+      <div className="bg-image"></div>
       <div className="App">
 
         <NavBar user={user} logout={logout} />

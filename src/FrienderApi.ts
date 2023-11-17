@@ -15,8 +15,8 @@ interface UserApiInterface {
   user: UserInterface;
 }
 
-interface MessageApiInterface {
-  message: string;
+interface RelationshipApiInterface {
+  status: string;
 }
 
 interface UserInterface {
@@ -31,7 +31,7 @@ interface UserInterface {
 class FrienderApi {
   static token = null;
 
-  static async request(endpoint, headers, body, method = "GET") {
+  static async request(endpoint, headers = {}, body, method = "GET") {
     const url = new URL(`${BASE_URL}/${endpoint}`);
     headers = { ...headers, "x-access-token": `${FrienderApi.token}` };
 
@@ -52,13 +52,10 @@ class FrienderApi {
       console.error("API Error:", resp.statusText, resp.status);
       const { errors } = await resp.json();
 
-      throw errors;
-
       if (Array.isArray(errors)) {
         throw errors;
       }
       else {
-        console.log(errors);
         throw [errors];
       }
 
@@ -131,23 +128,23 @@ class FrienderApi {
     };
     const body = JSON.stringify({ response });
 
-    const data: MessageApiInterface = await FrienderApi.request(
+    const data: RelationshipApiInterface = await FrienderApi.request(
       `users/${username}/establish-relationship`,
       headers,
       body,
       "POST"
     );
 
-    return data.message;
+    return data.status;
   }
 
-  static async getFriends(username: string){
+  static async getFriends(username: string) {
     const data = await FrienderApi.request(
       `users/${username}/get-friends`,
       {},
       null,
       "GET"
-    )
+    );
 
     return data.friends;
   }
