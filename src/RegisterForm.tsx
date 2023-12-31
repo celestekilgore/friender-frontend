@@ -69,7 +69,7 @@ function RegisterForm({ register }: {register: Function}) {
                     required
                 />
 
-                <label className="form-label">Password</label>
+                <label>Password</label>
                 <input
                     type="password"
                     name="password"
@@ -80,7 +80,7 @@ function RegisterForm({ register }: {register: Function}) {
                     required
                 />
 
-                <label className="form-label">Zip Code</label>
+                <label>Zip Code</label>
                 <input
                     type="text"
                     name="zip_code"
@@ -90,7 +90,7 @@ function RegisterForm({ register }: {register: Function}) {
                     required
                 />
 
-                <label className="form-label">Friend Radius</label>
+                <label>Friend Radius (Miles)</label>
                 <input
                     type="number"
                     name="friend_radius"
@@ -100,7 +100,7 @@ function RegisterForm({ register }: {register: Function}) {
                     required
                 />
 
-                <label className="form-label">Hobbies</label>
+                <label>Hobbies</label>
                 <textarea
                     name="hobbies"
                     className="form-control"
@@ -109,7 +109,7 @@ function RegisterForm({ register }: {register: Function}) {
                     required
                 />
 
-                <label className="form-label">Interests</label>
+                <label>Interests</label>
                 <textarea
                     name="interests"
                     className="form-control"
@@ -118,7 +118,7 @@ function RegisterForm({ register }: {register: Function}) {
                     required
                 />
 
-                <label className="form-label">Image</label>
+                <label>Profile Picture</label>
                 <input
                     type="file"
                     name="image"
@@ -128,7 +128,7 @@ function RegisterForm({ register }: {register: Function}) {
                 />
 
                 <button className="btn btn-primary mt-3" type="submit">
-                    Register
+                    Register!
                 </button>
             </form>
             {alerts.length > 0 &&
