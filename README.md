@@ -1,6 +1,6 @@
 # Friender
 
-A full-stack Tinder-like clone that allows users to find friends in their geographic area. Users can swipe yes/no, see a list of their friends, and login/logout.
+A full-stack Tinder-like clone that allows users to find friends in their geographic area. Users can swipe yes/no, see a list of their friends, and log in/log out.
 
 This repo contains the React front end, the Flask backend can be found <a href="https://github.com/celestekilgore/friender-backend">here</a>.
 
@@ -30,8 +30,8 @@ Here is an overview of some of the key features
 - If either user swipes no, the two users won't see each other again.
 - Utilizes an AWS S3 bucket to efficiently store user’s profile pictures.
 
-# To-do
-- Implement a messaging feature.
+### To-do
+- Implement the messaging feature.
 - Add testing. 
 
 
