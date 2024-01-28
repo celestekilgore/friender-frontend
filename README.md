@@ -30,4 +30,8 @@ Here is an overview of some of the key features
 - If either user swipes no, the two users won't see each other again.
 - Utilizes an AWS S3 bucket to efficiently store user’s profile pictures.
 
+# To-do
+- Implement a messaging feature.
+- Add testing. 
+
 
