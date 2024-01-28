@@ -2,7 +2,7 @@
 
 A full-stack Tinder-like clone that allows users to find friends in their geographic area. Users can swipe yes/no, see a list of their friends, and login/logout.
 
-##### This repo contains the React front end, the Flask backend can be found <a href="https://github.com/celestekilgore/friender-backend">here</a>.
+This repo contains the React front end, the Flask backend can be found <a href="https://github.com/celestekilgore/friender-backend">here</a>.
 
 ## Live Demo
 
