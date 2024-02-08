@@ -8,7 +8,7 @@ This repo contains the React front end, the Flask backend can be found <a href="
 
 Here is a [demo](https://friend-er.surge.sh/) of Friender. 
 
-Feel free to use 'testuser' and 'password' to log in, or create your own account! 
+Feel free to use 'testuser' and 'password' to log in, or create your own account! (Most of the sample users uses the zip code 04106)
 
 This is hosted using a free service so please give the server a few minutes to warm up. 
 
